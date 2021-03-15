@@ -20,7 +20,6 @@
         <router-link to="/signin">Sign In</router-link>
       </div>
       </div>
-      
     </div>
     <router-view />
     <div id="footer">
@@ -55,14 +54,17 @@
   background-size: cover;
   background-clip: content-box;
 }
-
 #nav {
   /* padding: 30px; */
   background-image: linear-gradient(rgb(0,0,0,1),rgb(0,0,0,.0));
-  height: 200px;
-  padding-bottom: 120px;
+  height: 160px;
+  padding-bottom: 10px;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
+  /* position:fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px; */
 }
 
 #nav a {

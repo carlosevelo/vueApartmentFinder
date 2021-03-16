@@ -32,7 +32,9 @@
         </div>
       </div>
     </div>
+
     <router-view />
+    
     <div id="footer">
       <div class="footer_section">
         <h2>Resources</h2>

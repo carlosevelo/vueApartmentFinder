@@ -4,20 +4,28 @@
       <h1>Saved Listings</h1>
     </div>
     <div class="listings">
-      <div v-for="post in posts" :key="post.listingId" class="listing">
-        <Listings> {{post}}</Listings>
+      <div v-for="listing in allSavedListings" :key="listing.id">
+        <Listing :listing="listing"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Listings from "@/components/Listings.vue";
+import Listing from "@/components/Listing.vue";
+import Api from '../api';
+import { getJwtToken, getUserIdFromToken } from "../auth";
 
 export default {
   name: "Saved",
   components: {
-    Listings
+    Listing
+  },
+  data() {
+    return {
+      userid: getUserIdFromToken(getJwtToken()),
+      allSavedListings: Api.getSavedListings(this.userid),
+    }
   }
 };
 </script>

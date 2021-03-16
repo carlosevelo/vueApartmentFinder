@@ -104,8 +104,33 @@
 </template>
 
 <script>
+import Api from "../api";
+import { getUserIdFromToken, getJwtToken } from "../auth";
 export default {
-  name: 'Sell'
+  name: 'Sell',
+  data() {
+    return {
+      aptName: "",
+      address: "",
+      rentType: "",
+      rentAmount: "",
+      amenitites: "",
+      description: "",
+      userid: getUserIdFromToken(getJwtToken()),
+
+    }
+  },
+  methods: {
+    handlePost() {
+      Api.addListing(this.data)
+        .then(() => {
+          this.$router.push("/sell");
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    }
+  }
 }
 </script>
 

@@ -3,10 +3,9 @@
     <div class="listing">
       <img >
       <div class="details">
-        <h3>Belmont Condominiums Unit #137</h3>
-        <p>5 miles away</p>
-        <p>$380 - $480</p>
-        <p>Lovely unit at the base of Y Mountain. Large and spacious. Great roomates. Parking sucks though.</p>
+        <h3>{{listing.address}}</h3>
+        <p>{{listing.price}}</p>
+        <p>{{listing.details}}</p>
       </div>
       <div class="saveshare">
         <button>Share</button>
@@ -17,6 +16,11 @@
 
 <script>
 export default {
-  name: "Listings",
+  name: "Listing",
+  props: ['listing'],
 };
 </script>
+
+<style scoped>
+
+</style>

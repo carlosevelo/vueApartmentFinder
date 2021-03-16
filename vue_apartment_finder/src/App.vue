@@ -17,18 +17,18 @@
       </div>
       <div v-if="loggedIn" id="custom_links">
         <div>
-          <router-link to="/login">Login</router-link>
+          <router-link to="/logout">Logout</router-link>
         </div>
         <div>
-          <router-link to="/signup">Sign Up</router-link>
+          <router-link to="/profile">Profile</router-link>
         </div>
       </div>
       <div v-else id="custom_links">
         <div>
-          <router-link to="/saved">Saved</router-link>
+          <router-link to="/login">Login</router-link>
         </div>
         <div>
-          <router-link to="/profile">Profile</router-link>
+          <router-link to="/signup">Sign Up</router-link>
         </div>
       </div>
     </div>
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import { getJwtToken } from "../src/auth.js";
+
 export default {
   name: "",
   data() {
@@ -62,10 +64,10 @@ export default {
   mounted: function() {
     const token = getJwtToken();
     if (token === undefined || token === "undefined" || token === null) {
-      loggedIn = false;
+      this.loggedIn = false;
     }
     else {
-      loggedIn = true;
+      this.loggedIn = true;
     }
   }
   

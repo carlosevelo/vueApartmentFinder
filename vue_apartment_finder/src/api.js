@@ -1,5 +1,5 @@
 import axios from "axios";
-import { authHeader, getJwtToken, getUserIdFromToken } from "./auth";
+//import { authHeader, getJwtToken, getUserIdFromToken } from "./auth";
 
 const API_URL = "http://localhost:8000";
 

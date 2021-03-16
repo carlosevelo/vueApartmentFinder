@@ -5,6 +5,8 @@ import Buy from "../views/Buy.vue";
 import Sell from "../views/Sell.vue";
 import Saved from "../views/Saved.vue";
 import Login from "../views/Login.vue";
+import Signup from "../views/Signup";
+import Logout from "../views/Logout.vue";
 
 Vue.use(VueRouter);
 
@@ -38,6 +40,11 @@ const routes = [
     path: "/signup",
     name: "Signup",
     component: Signup
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    component: Logout
   }
 ];
 

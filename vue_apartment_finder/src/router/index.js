@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Buy from "../views/Buy.vue";
 import Sell from "../views/Sell.vue";
 import Saved from "../views/Saved.vue";
+import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,16 @@ const routes = [
     path: "/saved",
     name: "Saved",
     component: Saved
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login
+  },
+  {
+    path: "/signup",
+    name: "Signup",
+    component: Signup
   }
 ];
 

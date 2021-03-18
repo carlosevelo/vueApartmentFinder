@@ -17,7 +17,7 @@ class Api {
 
   addListing(listing) {
     return axios.post(
-      API_URL + "/articles",
+      API_URL + "/postlisting",
       {
         ...listing,
         // add user id from JWT token

@@ -5,7 +5,7 @@ const API_URL = "http://192.168.50.57:8000";
 
 class Api {
   getListings() {
-     return axios.get(API_URL + "/listings", {});
+     return axios.get(API_URL + "/Listings", {});
   }
   getSavedListings(userid) {
     return axios.get(API_URL + `/listings?userid=eq.${userid}`, {});

@@ -1,11 +1,7 @@
 <template>
   <div class="buy">
-    <div class="page-content-buy">
-      <div class="allListings">
-        <div v-for="listing in allListings" :key="listing.id">
-          <Listing :listing="listing"/>
-        </div>
-      </div>
+    <div class="allListings">
+      <Listing :listing="listing" v-for="listing in allListings" :key="listing.listingid"/>
     </div>
   </div>
 </template>
@@ -20,71 +16,25 @@ export default {
   },
   data() {
     return {
-      allListings: Api.getListings(),
+      allListings: "",
     }
+  },
+  mounted: function() {
+    Api.getListings()
+      .then((response) => {
+        this.allListings = response.data;
+      })
   }
 }
 </script>
 
 <style scoped>
-.page-content-buy {
-    display: flex;
-    justify-content: center;
-}
-.page-content-buy * {
-    color: whitesmoke;
-}
-.filters-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-    margin: 10px;
-    background-color: rgba(0,0,0,.6);
-    border-radius: 15px;
-}
-.filter-title {
-    text-align: center;
-    color: whitesmoke;
-}
-.rent-type, .price, .location, .amenities {
-    display: flex;
-    justify-content: center;
-    width: 99%;
-    height: 150px;
-}
-.rent-type-title, .price-title, .location-title, .amenities-title {
-    text-align: center;
-    width: 25%;
-    height: 150px;
-    margin: 10px;
-    color: whitesmoke;
-}
-.rent-type-list, .price-list, .location-list, .amenities-list {
-    text-align: left;
-    width: 70%;
-    height: 150px;
-    margin: 10px;
-    color: whitesmoke;
-}
-.price-list {
-    display: flex;
-}
-.location-list form {
-    background-color: whitesmoke;
-    color: gray;
-}
-.pre-search-results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 65%;
-    margin: 10px;
-    background-color: rgba(0,0,0,.6);
-    border-radius: 15px;
-}
-.pre-search-results button{
-    color: black;
-}
+.buy{
 
+}
+.allListings {
+  display: grid;
+  padding-left: 200px;
+  padding-right: 200px;
+}
 </style>

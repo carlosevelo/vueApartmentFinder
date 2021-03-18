@@ -1,11 +1,11 @@
 <template>
   <div class="sell">
     <div class="page-content-sell">
-      <div class="sidebar-div">
+      <!-- <div class="sidebar-div">
         <div class="sidebar-title">
           <h3>Current Listed Postings</h3>
         </div>
-      </div>
+      </div> -->
       <div class="create-new-listing">
         <div>
             <h1>Create New Listing</h1>
@@ -105,7 +105,6 @@
 
 <script>
 import Api from "../api";
-import { getUserIdFromToken, getJwtToken } from "../auth";
 export default {
   name: 'Sell',
   data() {
@@ -116,7 +115,6 @@ export default {
       rentAmount: "",
       amenitites: "",
       description: "",
-      userid: getUserIdFromToken(getJwtToken()),
 
     }
   },

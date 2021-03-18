@@ -56,12 +56,8 @@ export default {
       Api.login(this.email, this.password)
         .then((res) => {
           setJwtToken(res.data[0].token);
-          if (this.$route.params.nextUrl != null) {
-            this.$router.push(this.$route.params.nextUrl);
-          } else {
-            this.$router.push("/admin");
-          }
-        })
+            this.$router.push("/");
+          })
         .catch((error) => {
           console.log(error);
           if (error.response && error.response.status === 403) {

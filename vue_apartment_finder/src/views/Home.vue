@@ -31,7 +31,16 @@
 <script>
 export default {
   name: 'Home',
-
+  // data() {
+  //   return {
+  //     loggedIn: false,
+  //   }
+  // },
+  // mounted: function() {
+  //   if (this.$root.$App.data.loggedIn === true) {
+  //     this.loggedIn = true;
+  //   }
+  // }
 }
 </script>
 

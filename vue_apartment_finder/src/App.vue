@@ -54,8 +54,7 @@
 </template>
 
 <script>
-import { getJwtToken } from "../src/auth.js";
-
+import { getJwtToken } from './auth'
 export default {
   name: "",
   data() {
@@ -63,16 +62,14 @@ export default {
       loggedIn: false,
     }
   },
-  mounted: function() {
-    const token = getJwtToken();
-    if (token === undefined || token === "undefined" || token === null) {
-      this.loggedIn = false;
-    }
-    else {
+  updated: function() {
+    if (getJwtToken()) {
       this.loggedIn = true;
     }
+    else {
+      this.loggedIn = false;
+    }
   }
-  
 }
 </script>
 

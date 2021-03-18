@@ -72,7 +72,7 @@ export default {
     handleRegister() {
       this.message = "";
       this.loading = true;
-      Api.signup(this.email, this.password, this.name, this.phonenum, this.isadmin)
+      Api.signup(this.email, this.password, this.name, this.isadmin, this.phonenum)
         .then(() => {
           this.$router.push("/login");
         })

@@ -17,10 +17,16 @@ class Api {
 
   addListing(listing) {
     return axios.post(
-      API_URL + "/postlisting",
+      API_URL + "/createpost",
       {
-        ...listing,
-        // add user id from JWT token
+        aptName: listing.aptName,
+        address: listing.address,
+        unitnum: listing.unitnum,
+        city: listing.city,
+        state: listing.state,
+        zipcode: listing.zipcode,
+        rentAmount: listing.rentAmount,
+        description: listing.description, 
         userid: getUserIdFromToken(getJwtToken()),
       },
       {

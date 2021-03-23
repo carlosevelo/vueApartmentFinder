@@ -14,20 +14,54 @@ class Api {
   // getListingDetail(id) {
   //   return axios.get(API_URL + `/listings?listingid=eq.${id}`);
   // }
+  getComplexid(street) {
+    let complexid;
+    axios.get(API_URL + `/complex?street=eq.${street}`)
+      .then((response) => {
+        complexid = response.complexid;
+      })
+    return complexid;
+  }
 
+  addComplex(aptname, city, zipcode, address, state) {
+    return axios.post(
+      API_URL + "/rpc/createcomplex",
+      {
+        name: aptname,
+        street: address,
+        city: city,
+        state: state,
+        zipcode: zipcode,
+      },
+      {
+        headers: authHeader(),
+      }
+    );
+  }
+  addUnit(numrooms, unitnum, unittype, bldgnum, numbaths, complexid, price) {
+    return axios.post(
+      API_URL + "/rpc/createunit",
+      {
+        numrooms: numrooms,
+        unitnum: unitnum,
+        unittype: unittype,
+        bldgnum: bldgnum,
+        numbaths: numbaths,
+        complexid: complexid,
+        price: price,
+      },
+      {
+        headers: authHeader(),
+      }
+    );
+  }
   addListing(listing) {
     return axios.post(
-      API_URL + "/createpost",
-      {
-        aptName: listing.aptName,
-        address: listing.address,
-        unitnum: listing.unitnum,
-        city: listing.city,
-        state: listing.state,
-        zipcode: listing.zipcode,
-        rentAmount: listing.rentAmount,
-        description: listing.description, 
+      API_URL + "/rpc/createlisting",
+      { 
         userid: getUserIdFromToken(getJwtToken()),
+        // unitid: ,
+        description: listing.description,
       },
       {
         headers: authHeader(),

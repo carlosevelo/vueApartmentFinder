@@ -16,7 +16,7 @@
             <h3>Apartment Name: </h3>
           </div>
           <div class="enter-info-field">
-            <input v-model="aptName" type="text" name="aptName" placeholder="Apartment Name"/>
+            <input v-model="aptname" type="text" name="name" placeholder="Apartment Name"/>
           </div>
         </div>
         <div class="apt-address">
@@ -35,28 +35,47 @@
             </div>
           </div>
         </div>
-        <div class="apt-rent-type">
-          <div class="enter-info-title">
-            <h3>Type of Rent: </h3>
-          </div>
-          <div class="enter-info-field">
-            <select v-model="rentType">
-              <option value="0">Type of Rent</option>
-              <option value="1">Month-to-Month</option>
-              <option value="2">Contract (12 months)</option>
-              <option value="3">Contract (6 months)</option>
-            </select>
-          </div>
-        </div>
         <div class="apt-rent-amount">
           <div class="enter-info-title">
             <h3>Rent Amount: </h3>
           </div>
           <div class="enter-info-field">
-            <input v-model="rentAmount" type="text" name="rentAmount" placeholder="Rent Amount"/>
+            <input v-model="price" type="text" name="price" placeholder="Rent Amount"/>
           </div>
         </div>
-        <div class="apt-amenities">
+        <div class="apt-rent-amount">
+          <div class="enter-info-title">
+            <h3>Number of rooms: </h3>
+          </div>
+          <div class="enter-info-field">
+            <input v-model="numrooms" type="text" name="numrooms" placeholder="Number of rooms"/>
+          </div>
+        </div>
+        <div class="apt-rent-amount">
+          <div class="enter-info-title">
+            <h3>Unit Type: </h3>
+          </div>
+          <div class="enter-info-field">
+            <input v-model="unittype" type="text" name="unittype" placeholder="Unit type"/>
+          </div>
+        </div>
+        <div class="apt-rent-amount">
+          <div class="enter-info-title">
+            <h3>Building Number: </h3>
+          </div>
+          <div class="enter-info-field">
+            <input v-model="bldgnum" type="text" name="bldgnum" placeholder="Building Number"/>
+          </div>
+        </div>
+        <div class="apt-rent-amount">
+          <div class="enter-info-title">
+            <h3>Number of baths: </h3>
+          </div>
+          <div class="enter-info-field">
+            <input v-model="numbaths" type="text" name="numbaths" placeholder="Number of baths"/>
+          </div>
+        </div>
+        <div class="apt-rent-amount">
           <div class="enter-info-title">
               <h3>Amenities: </h3>
           </div>
@@ -112,27 +131,45 @@ export default {
   name: 'Sell',
   data() {
     return {
-      aptName: "",
+      aptname: "",
       address: "",
-      unitnum: "",
       city: "",
       state: "",
       zipcode: "",
-      rentType: "",
-      rentAmount: "",
-      amenitites: "",
+      
+      numrooms: "",
+      unitnum: "",
+      unittype: "",
+      bldgnum: "",
+      numbaths: "",
+      price: "",
+      
       description: "",
     }
   },
   methods: {
     handlePost() {
-      Api.addListing(this.data)
-        .then(() => {
-          this.$router.push("/");
+      let complexid = "";
+      Api.addComplex(this.aptname, this.city, this.zipcode, this.address, this.state)
+        .then(() => { 
+          complexid = Api.getComplexid(this.address);
+          Api.addUnit(this.numrooms, this.unitnum, this.unittype, this.bldgnum, this.numbaths, complexid, this.price)
+            .then(() => {
+              Api.addListing(this.description)
+                .then(() => {
+                  this.$router.push("/");
+                })
+                .catch((error) => {
+                  console.log(error);
+                })
+            })
+            .catch((error) => {
+              console.log(error);
+            })
         })
         .catch((error) => {
           console.log(error);
-        })
+        })  
     }
   }
 }
@@ -223,5 +260,8 @@ export default {
 .address2 {
     display: flex;
     justify-content: left;
+}
+button span {
+  color: black !important;;
 }
 </style>

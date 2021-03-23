@@ -10,6 +10,7 @@
       <p><strong>Zipzode: </strong> {{listing.zipcode}}</p>
       <p><strong>Availability: </strong> {{availability}}</p>
       <p><strong>Rent Price: </strong> ${{price}}</p>
+      <p><strong>Details: </strong><br> {{listing.description}}</p>
     </div>
     <div class="buttons"> 
       <button>Save</button>
